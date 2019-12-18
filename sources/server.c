@@ -108,7 +108,7 @@ void shuffle(int* array, int len);
 static void * start_quizz();
 static void * treat(void *);
 
-int postgame(void* arg, struct Player* currentPlayer);
+int pregame(void* arg, struct Player* currentPlayer);
 int game(void* arg, struct Player currentPlayer);
 
 int read_socket_error(int readCode);
@@ -456,7 +456,7 @@ static void *treat(void* arg)
     struct Player currentPlayer;
     currentPlayer.score = 0;
 
-    if (postgame((struct threadData*)arg, &currentPlayer) == 0)
+    if (pregame((struct threadData*)arg, &currentPlayer) == 0)
     {
         pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
         pthread_mutex_lock(&lock);
@@ -480,7 +480,7 @@ static void *treat(void* arg)
     return(NULL);
 }
 
-int postgame(void* arg, struct Player *currentPlayer)
+int pregame(void* arg, struct Player *currentPlayer)
 {
     struct threadData tdL;
     tdL = *((struct threadData*)arg);
