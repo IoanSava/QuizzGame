@@ -1,3 +1,8 @@
+remove:
+	rm -rf client.bin || echo -n ''
+	rm -rf server.bin || echo -n ''
+	rm -rf server_db.bin || echo -n ''
+
 build:
 	rm -rf client.bin || echo -n ''
 	rm -rf server.bin || echo -n ''
